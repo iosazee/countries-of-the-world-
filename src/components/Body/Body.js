@@ -17,9 +17,17 @@ function Body () {
             fetchCountries()
         }, []);
 
+        const handleChange =(event) => {
+            console.log(event.target.value);
+        }
 
     return (
         <div>
+            <select onChange={handleChange} name='countries' id="countries-select">
+                { countries.map((option, index) => (<option key={index} value={option.name.official}>{option.name.official}</option>)) }
+            </select>
+
+
             {
                 countries.map((countriesArray) => <Countries key={countriesArray.tld} country ={countriesArray} />)
             }
