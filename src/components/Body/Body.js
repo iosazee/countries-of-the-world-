@@ -4,7 +4,7 @@ import Countries from "./Countries";
 
 function Body () {
         const [countries, setCountries] = React.useState([]);
-
+        const [selectedCountry, setSelectedCountry] = React.useState({});
         const fetchCountries = () => {
             axios.get('https://restcountries.com/v3.1/all')
             .then((response) => {
@@ -19,6 +19,7 @@ function Body () {
 
         const handleChange =(event) => {
             console.log(event.target.value);
+            setSelectedCountry(event.target.value);
         }
 
     return (
@@ -29,7 +30,7 @@ function Body () {
 
 
             {
-                countries.map((countriesArray) => <Countries key={countriesArray.tld} country ={countriesArray} />)
+                countries.filter((country) => country.name.official === selectedCountry).map((countriesArray) => <Countries key={countriesArray.tld} country ={countriesArray} />)
             }
         </div>
     )
