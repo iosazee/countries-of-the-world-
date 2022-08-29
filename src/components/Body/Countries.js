@@ -1,4 +1,5 @@
 import './Countries.css';
+import React from 'react';
 
 function Countries (props) {
     console.log(props)
@@ -17,6 +18,8 @@ function Countries (props) {
               
             }
             <p>Population: {props.country.population}</p>
+            
+            <button onClick= {() => props.deleteCountry(props.country.name.official)}>Delete Country</button>
            
         </div>
     ) 
